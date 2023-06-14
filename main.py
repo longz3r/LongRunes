@@ -1,0 +1,1 @@
+print("Test pyinstaller github action")
