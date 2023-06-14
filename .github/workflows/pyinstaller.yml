@@ -29,6 +29,7 @@ jobs:
       - name: Build and package with PyInstaller
         uses: JackMcKew/pyinstaller-action-windows@v0.1.2
         with:
+          spec: build.spec
           path: src
           entryPoint: main.py  # Replace with your main script name
 
