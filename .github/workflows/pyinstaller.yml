@@ -1,0 +1,39 @@
+name: PyInstaller Windows
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@lastest
+
+      - name: Set up Python
+        uses: actions/setup-python@lastest
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Replace with your requirements file, if applicable
+
+      - name: Build and package with PyInstaller
+        uses: JackMcKew/pyinstaller-action-windows@v0.1.2
+        with:
+          entry_script: main.py  # Replace with your main script name
+          output_dir: dist      # Replace with your desired output directory
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@latest
+        with:
+          name: PyInstaller package
+          path: dist
