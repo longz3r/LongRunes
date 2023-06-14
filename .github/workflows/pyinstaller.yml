@@ -14,12 +14,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@lastest
+        uses: actions/checkout@v3.5.3
 
       - name: Set up Python
-        uses: actions/setup-python@lastest
+        uses: actions/setup-python@v3.1.4
         with:
-          python-version: 3.9
+          python-version: 3.11.4
 
       - name: Install dependencies
         run: |
@@ -33,7 +33,7 @@ jobs:
           output_dir: dist      # Replace with your desired output directory
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: PyInstaller package
           path: dist
