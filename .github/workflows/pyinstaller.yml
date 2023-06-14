@@ -34,4 +34,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: executable
-        path: dist/main.exe  # Replace 'main.exe' with the desired name of the generated executable
+        path: dist  # Replace 'main.exe' with the desired name of the generated executable
