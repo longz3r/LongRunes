@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -29,11 +29,11 @@ jobs:
       - name: Build and package with PyInstaller
         uses: JackMcKew/pyinstaller-action-windows@v0.1.2
         with:
-          entry_script: main.py  # Replace with your main script name
+          entryPoint: main.py  # Replace with your main script name
           output_dir: dist      # Replace with your desired output directory
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: PyInstaller package
+          name: Package
           path: dist
