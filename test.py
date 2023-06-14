@@ -18,5 +18,5 @@ if response.status_code == 200:
     # Print the response content
     print(response.text)
 else:
-    print('Request failed with status code:', response.status_code)
+    print('Request faied with status code:', response.status_code)
     print(response.text)
