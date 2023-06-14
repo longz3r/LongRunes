@@ -1,4 +1,4 @@
-name: PyInstaller Windows
+name: Build Executable
 
 on:
   push:
@@ -10,31 +10,28 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3.5.3
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v3.1.4
-        with:
-          python-version: 3.11.4
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.11.4  # Specify the Python version you need
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Replace with your requirements file, if applicable
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pyinstaller
 
-      - name: Build and package with PyInstaller
-        uses: JackMcKew/pyinstaller-action-windows@v0.1.2
-        with:
-          spec: build.spec
-          path: src
-          entryPoint: main.py  # Replace with your main script name
+    - name: Build executable
+      run: pyinstaller --onefile src/main.py  # Replace 'main.py' with your Python file name
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: Package
-          path: dist
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: executable
+        path: dist  # Replace 'main.exe' with the desired name of the generated executable
