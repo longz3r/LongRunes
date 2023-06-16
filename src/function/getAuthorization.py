@@ -1,5 +1,6 @@
 import subprocess
 import re
+import os
 from base64encode import encodeToken
 
 #chatgpt :))
@@ -19,7 +20,11 @@ else:
     #search the output to find matched port and auth token
     port = re.search("--app-port=([0-9]*)", output).group()
     authToken = re.search("--remoting-auth-token=([\w-]*)", output).group()
-
     #split the output and take whatever behind the "="
-    print(port.split("=")[1])
-    print(encodeToken(authToken.split("=")[1]))
+    port = port.split("=")[1]
+    authToken = encodeToken(authToken.split("=")[1])
+    if os.path.exists("C:/LongDev/lockfile"):
+        os.remove("C:/LongDev/lockfile")
+    data = open("C:/LongDev/lockfile", "w+")
+    data.write("DO NOT CHANGE OR DELETE THIS FILE WHEN LONGRUNES IS RUNNING\n")
+    data.writelines([port + "\n", authToken + "\n"])
