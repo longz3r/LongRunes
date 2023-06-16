@@ -33,5 +33,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v3.1.2
       with:
-        name: LongRunes ${{ github.run_number }}
+        name: LongRunes build ${{ github.run_number }}
         path: dist  # Replace 'main.exe' with the desired name of the generated executable
