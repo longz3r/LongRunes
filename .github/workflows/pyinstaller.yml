@@ -28,10 +28,10 @@ jobs:
         pip install pyinstaller
 
     - name: Build executable
-      run: pyinstaller --onefile src/main.py  # Replace 'main.py' with your Python file name
+      run: pyinstaller --onefile src/LongRunes.py  # Replace 'main.py' with your Python file name
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3.1.2
       with:
-        name: LongRunes
+        name: LongRunes {{ github.run_number }}
         path: dist  # Replace 'main.exe' with the desired name of the generated executable
