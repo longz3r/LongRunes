@@ -3,4 +3,3 @@ build/
 dist/
 *.spec
 test*.py
-ngu*.py

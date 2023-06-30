@@ -1,10 +1,9 @@
 import subprocess
 import re
 import os
-from base64encode import encodeToken
+from utils.base64encode import encodeToken
 
 def getAuthorization():
-    print(__name__)
     #chatgpt :))
     # Define the command to execute
     command = "wmic PROCESS WHERE name='LeagueClientUx.exe' GET commandline "  # Replace with your desired command
@@ -25,9 +24,10 @@ def getAuthorization():
         #split the output and take whatever behind the "="
         port = port.split("=")[1]
         authToken = encodeToken(authToken.split("=")[1])
-        if os.path.exists("C:/LongDev/authData"):
-            os.remove("C:/LongDev/authData")
-        data = open("C:/LongDev/authData", "w+")
+        if os.path.exists("C:/LongDev/LongRunes/lcuData"):
+            os.remove("C:/LongDev/LongRunes/lcuData")
+        data = open("C:/LongDev/LongRunes/lcuData", "w+")
         data.write("DO NOT CHANGE OR DELETE THIS FILE WHEN LONGRUNES IS RUNNING\n")
         data.writelines([port + "\n", authToken + "\n"])
 
+getAuthorization()

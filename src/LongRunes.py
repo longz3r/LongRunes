@@ -1,6 +1,8 @@
+from startup import startup
+
 def main():
-    print("nigga")
-from function.getAuthorization import getAuthorization
+    startup()
 
-getAuthorization()
 
+if __name__ == "__main__":
+    main()
