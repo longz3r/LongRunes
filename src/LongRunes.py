@@ -1,4 +1,4 @@
-from startup import startup
+import startup
 import asyncio
 
 from function.test import mainTask
