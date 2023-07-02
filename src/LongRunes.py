@@ -1,12 +1,16 @@
-import startup
+# import startup
 import asyncio
 
-from function.test import mainTask
+from asyncTask import asyncTask
+from function.getCurrentSummoner import getCurrentSummoner
+from startup import startup
 
 def main():
     print("Starting LongRunes...")
     startup()
-    asyncio.run(mainTask())
+
+    print("Welcome", getCurrentSummoner()["displayName"])
+    asyncio.run(asyncTask())
 
 
 if __name__ == "__main__":
