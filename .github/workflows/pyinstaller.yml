@@ -29,6 +29,8 @@ jobs:
 
     - name: Build executable
       run: pyinstaller --onefile src/LongRunes.py  # Replace 'main.py' with your Python file name
+    - name: Rename file
+      run: mv LongRunes.exe LongRunes.${{ github.run_number }}.exe
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3.1.2
