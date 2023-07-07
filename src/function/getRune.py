@@ -4,10 +4,10 @@ import json
 
 def getRune(championName):
     # Make a GET request to the website
-    print("begin GET request")
+    # print("begin GET request")
     requestChampion = championName.replace("'", "")
     response = requests.get(f'https://www.metasrc.com/5v5/champion/{requestChampion.lower().replace(" ", "")}')
-    print("GET request end")
+    # print("GET request end")
 
     # Parse the HTML content of the page using BeautifulSoup
     soup = BeautifulSoup(response.content, 'html.parser')
@@ -37,16 +37,15 @@ def getRune(championName):
     # "Resolve": 8400,
     # "Sorcery": 8200,
 
-    with open('ass.json', 'r') as f:
-        assRunes = json.load(f)
+    # with open('ass.json', 'r') as f:
+    #     assRunes = json.load(f)
 
-    print(assRunes[str(name2[4])], assRunes[str(name2[0])],  assRunes[str(name2[5])])
+    # print(assRunes[str(name2[4])], assRunes[str(name2[0])],  assRunes[str(name2[5])])
     if name2[0] != name2[5]:
         for i in range(1,100):
             print("Please report this champion name to Long Zer#1086 (discord)")
     if name[5] == "6361":
         name[5] = "nimbuscloak"
-    print(name[4:10])
     # print(name[10:13])
     # print(name)
 
@@ -61,7 +60,7 @@ def getRune(championName):
             'selectedPerkIds': [],
             'subStyleId': name2[0]}
 
-    with open('runes.json', 'r') as f:
+    with open('C:/LongDev/LongRunes/runes.json', 'r') as f:
         runesQuerry = json.load(f)
 
 
@@ -72,4 +71,4 @@ def getRune(championName):
 
     return runes
 
-# getRune("K'Sante")
+# print(getRune("Elise"))

@@ -17,6 +17,8 @@ def runeFilter(version:str, language:str="en_US"):
             "statmodsmagicresicon.magicresist_fix": 5003,
             "statmodshealthscalingicon": 5001,
             "statmodscdrscalingicon": 5007,
+            #nimbus cloak fix
+            "6361": 8275,
         }
         for item in data:
             filtered_data[item["key"]] = item["id"]

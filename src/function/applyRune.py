@@ -2,13 +2,15 @@ from function.querryChampion import querryChampion
 from function.getRune import getRune
 from function.lcu_request import lcu_request
 
+import json
+
 def applyRune(championId):
     championName = querryChampion(championId)
+    print("Applying runes for", championName)
     runes = getRune(championName)
-    print(runes)
 
     pages = lcu_request("GET", "/lol-perks/v1/pages")
-    pages = pages.json()
+    pages = json.loads(pages)
 
     if len(pages) == 0:
         #create page function
@@ -17,5 +19,5 @@ def applyRune(championId):
     else:
         #update page
         currentPage = lcu_request("GET", "/lol-perks/v1/currentpage")
-        currentPage = currentPage.json()
-        lcu_request("PUT", "/lol-perks/v1/pages/" + str(currentPage["id"]), runes)
+        currentPage = json.loads(currentPage)
+        lcu_request("PUT", f"/lol-perks/v1/pages/{currentPage['id']}", runes)

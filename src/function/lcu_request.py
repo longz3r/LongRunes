@@ -34,13 +34,14 @@ def lcu_request(method:str, endpoint:str, data={}):
             print("Make sure League Client is running")
             return False
     elif method == "PUT":
-        response = requests.put(f'https://127.0.0.1:{port}{endpoint}', headers=headers, verify=False, data=data)
+        response = requests.put(f'https://127.0.0.1:{port}{endpoint}', headers=headers, verify=False, json=data)
+        print(data)
         # Check the response status code
-        if response.status_code == 200:
+        if response.status_code == 200 or (response.status_code == 201 and endpoint == "/lol-perks/v1/pages/"):
             # Print the response content
             return response.text
-        else:
-            print('LCU request faied with status code:', response.status_code)
-            print("Error message:", response.text)
-            print("Make sure League Client is running")
-            return False
+        # else:
+        #     print('LCU request faied with status code:', response.status_code)
+        #     print("Error message:", response.text)
+        #     print("Make sure League Client is running")
+        #     return False

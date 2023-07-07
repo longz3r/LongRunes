@@ -14,11 +14,10 @@ async def getCurrentChampion():
     if response != False:
         # Compare the data with the previous response
         if response != previous_data:
-            print("Data has changed:", response)
+            # print("Data has changed:", response)
             previous_data = response
-            if response == "0":
-                return
-            applyRune(response)
+            if response != "0" and response != None:
+                applyRune(response)
 
     # Schedule the next HTTP request after 5 seconds
     await asyncio.sleep(2)
