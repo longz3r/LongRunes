@@ -35,7 +35,6 @@ def lcu_request(method:str, endpoint:str, data={}):
             return False
     elif method == "PUT":
         response = requests.put(f'https://127.0.0.1:{port}{endpoint}', headers=headers, verify=False, json=data)
-        print(data)
         # Check the response status code
         if response.status_code == 200 or (response.status_code == 201 and endpoint == "/lol-perks/v1/pages/"):
             # Print the response content

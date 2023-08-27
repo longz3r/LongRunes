@@ -14,7 +14,7 @@ def runeFilter(version:str, language:str="en_US"):
             "statmodsattackspeedicon": 5005,
             "statmodsadaptiveforceicon": 5008,
             "statmodsarmoricon": 5002,
-            "statmodsmagicresicon.magicresist_fix": 5003,
+            "statmodsmagicresicon": 5003,
             "statmodshealthscalingicon": 5001,
             "statmodscdrscalingicon": 5007,
             #nimbus cloak fix
